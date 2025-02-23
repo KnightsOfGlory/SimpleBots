@@ -5,16 +5,15 @@ class Program
 {
     static void Main()
     {
-        var server = "ash.wserv.org";
+        var server = "war.pianka.io";
         var port = 6112;
         var username = "username";
         var password = "password";
-        var home = "warnet";
+        var home = "portal";
 
         using (var socket = Connect(server, port))
         {
             Login(socket, username, password, home);
-            Send(socket, "hello!");
 
             Loop(socket);
 
@@ -57,7 +56,11 @@ class Program
             {
                 var line = reader.ReadLine()?.Trim();
                 if (line == null) break;
-                Console.WriteLine(line);
+                
+                if (line.StartsWith("CHANNEL JOIN")){
+                    Send(client, "Hello, Warnet!");
+                }
+                
             }
         }
     }
