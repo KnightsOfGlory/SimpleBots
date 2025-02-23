@@ -57,6 +57,8 @@ class Program
                 var line = reader.ReadLine()?.Trim();
                 if (line == null) break;
                 
+                Console.WriteLine(line);
+                
                 if (line.StartsWith("CHANNEL JOIN")){
                     Send(client, "Hello, Warnet!");
                 }
